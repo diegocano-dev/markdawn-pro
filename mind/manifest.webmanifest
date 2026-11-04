@@ -3,7 +3,7 @@
   "short_name": "Mind Pro",
   "description": "Mapas mentales como en Office, guardados en Markdown.",
   "lang": "es",
-  "id": "./",
+  "id": "markdawn-mind-pro",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
