@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarkDawn Pro</title>
+<meta name="description" content="MarkDawn Writer Pro y MarkDawn Mind Pro: instálalas en tu ordenador y actívalas con tu clave.">
+<link rel="icon" type="image/png" href="writer/icon-192.png">
+<style>
+  :root { --bg: #f3f2f1; --card: #fff; --ink: #201f1e; --muted: #605e5c; --line: #e1dfdd; --ui: "Segoe UI", system-ui, -apple-system, sans-serif; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #1b1a19; --card: #252423; --ink: #f3f2f1; --muted: #c8c6c4; --line: #3b3a39; color-scheme: dark; } }
+  * { box-sizing: border-box; } body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--ui); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 48px 20px 36px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--muted); }
+  .mark b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 6px; background: var(--ink); color: var(--bg); font-size: 13px; }
+  .lang { font: 600 13px var(--ui); color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; height: 32px; padding: 0 12px; cursor: pointer; }
+  h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 28px 0 10px; }
+  .lead { color: var(--muted); font-size: 18px; margin: 0 0 32px; max-width: 64ch; }
+  .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; }
+  .app { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .app img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); display: block; }
+  .app .body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .app h2 { margin: 0; font-size: 22px; } .app p { margin: 0; color: var(--muted); }
+  .actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; height: 42px; padding: 0 18px; border-radius: 6px; font-weight: 600; text-decoration: none; }
+  .btn.primary { background: var(--c); color: #fff; } .btn.ghost { border: 1px solid var(--line); color: var(--ink); }
+  .writer { --c: #2b579a; } .mind { --c: #0d767a; }
+  .how { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+  .how h3 { margin: 0 0 6px; font-size: 17px; } .how p { margin: 0; color: var(--muted); }
+  footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="mark"><b>M↓</b> MarkDawn Pro</span><button class="lang" id="lang" type="button">EN</button></div>
+  <h1 data-en="Install MarkDawn Pro">Instala MarkDawn Pro</h1>
+  <p class="lead" data-en="Open the app and install it from your browser: it gets its own window and icon, and works offline. Without a key it works like the free version; activate it with the key from your Gumroad purchase.">Abre la app e instálala desde el navegador: tendrá su propia ventana e icono, y funciona sin internet. Sin clave funciona como la versión gratuita; actívala con la clave de tu compra en Gumroad.</p>
+  <main class="apps">
+    <article class="app writer"><img src="writer.png" alt="MarkDawn Writer Pro"><div class="body">
+      <h2>MarkDawn Writer Pro</h2>
+      <p data-en="Write like in Word, save as Markdown. Block dragging, columns and mind maps you edit on the page.">Escribe como en Word, guarda en Markdown. Mover bloques, columnas y mapas mentales editables en el documento.</p>
+      <div class="actions"><a class="btn primary" href="writer/" data-en="Open Writer Pro →">Abrir Writer Pro →</a><a class="btn ghost" href="https://diegocanodev.gumroad.com/l/markdawn-writer-pro" data-en="Get a key">Conseguir clave</a></div>
+    </div></article>
+    <article class="app mind"><img src="mind.png" alt="MarkDawn Mind Pro"><div class="body">
+      <h2>MarkDawn Mind Pro</h2>
+      <p data-en="Office-style mind maps saved as Markdown, with every style, shape and structure.">Mapas mentales como en Office, guardados en Markdown, con todos los estilos, formas y estructuras.</p>
+      <div class="actions"><a class="btn primary" href="mind/" data-en="Open Mind Pro →">Abrir Mind Pro →</a><a class="btn ghost" href="https://diegocanodev.gumroad.com/l/markdawn-mind" data-en="Get a key">Conseguir clave</a></div>
+    </div></article>
+  </main>
+  <section class="how">
+    <div><h3 data-en="Windows and Linux (Chrome or Edge)">Windows y Linux (Chrome o Edge)</h3><p data-en="Open the app and click the install icon on the right of the address bar, or menu ⋯ → Apps → Install. .md files can open with it.">Abre la app y pulsa el icono de instalar a la derecha de la barra de direcciones, o menú ⋯ → Aplicaciones → Instalar. Los archivos .md se podrán abrir con ella.</p></div>
+    <div><h3>Mac</h3><p data-en="In Safari: File → Add to Dock. In Chrome or Edge: the install icon in the address bar.">En Safari: Archivo → Añadir al Dock. En Chrome o Edge: el icono de instalar en la barra de direcciones.</p></div>
+  </section>
+  <footer><span data-en="© 2026 Diego Cano · Pro versions: personal license, not open source">© 2026 Diego Cano · Versiones Pro: licencia personal, no es código abierto</span><span><a href="https://diegocano-dev.github.io/markdawn-apps/" data-en="Free versions">Versiones gratuitas</a></span></footer>
+</div>
+<script>
+(function () {
+  const els = [...document.querySelectorAll('[data-en]')]; els.forEach(e => e.dataset.es = e.innerHTML);
+  function set(l) { const en = l === 'en'; document.documentElement.lang = l; els.forEach(e => e.innerHTML = en ? e.dataset.en : e.dataset.es); document.getElementById('lang').textContent = en ? 'ES' : 'EN'; try { localStorage.setItem('mdpro-lang', l); } catch (e) {} }
+  let l = null; try { l = localStorage.getItem('mdpro-lang'); } catch (e) {}
+  set(l || ((navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en'));
+  document.getElementById('lang').onclick = () => set(document.documentElement.lang === 'en' ? 'es' : 'en');
+})();
+</script>
+</body>
+</html>
