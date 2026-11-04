@@ -3,7 +3,7 @@
   "short_name": "Writer Pro",
   "description": "Escribe como en Word, guarda en Markdown.",
   "lang": "es",
-  "id": "./",
+  "id": "markdawn-writer-pro",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
