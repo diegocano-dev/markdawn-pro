@@ -1,6 +1,6 @@
 # MarkDawn Pro
 
-Installable versions of **MarkDawn Writer Pro** and **MarkDawn Mind Pro**: https://diegocano-dev.github.io/markdawn-pro/
+Installable versions of **MarkDawn Writer Pro** and **MarkDawn Mind Pro**: https://pro.markdawn.net/
 
 Without a license key they work like the free versions. Get a key on [Gumroad](https://diegocanodev.gumroad.com/).
 
