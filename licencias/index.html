@@ -64,9 +64,11 @@ textarea{width:100%;min-height:110px;padding:10px;border:1px solid var(--line);b
       <li>En Gumroad: <b>Settings → Advanced → Applications</b>.</li>
       <li>Crea una aplicación: nombre «MarkDawn Licencias», icono cualquiera y en <i>Redirect URI</i> pon <code>http://127.0.0.1</code>.</li>
       <li>Pulsa <b>Create application</b> y luego <b>Generate access token</b>.</li>
-      <li>Copia el token y pégalo arriba. No lo compartas: da acceso a tu cuenta de Gumroad.</li>
+      <li>Copia el valor que aparece como <b>Access token</b> (no el <i>Application ID</i> ni el <i>Application secret</i>) y pégalo arriba. No lo compartas: da acceso a tu cuenta de Gumroad.</li>
     </ol>
   </details>
+  <div class="btns"><button id="testTok">Probar token</button></div>
+  <div class="msg" id="tokMsg"></div>
 </div>
 
 <div class="card">
@@ -132,7 +134,8 @@ async function call(path, method, params) {
   const r = await fetch(API + path, { method, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(params) });
   let j = null; try { j = await r.json(); } catch (e) {}
   if (r.status === 422 && location.protocol === 'file:') throw new Error('Gumroad no acepta peticiones desde un archivo abierto con doble clic. Abre la herramienta desde https://pro.markdawn.net/licencias/');
-  if (r.status === 401) throw new Error('Gumroad no acepta el token (401). Revísalo o genera uno nuevo.');
+  if (r.status === 401) throw new Error('Gumroad no acepta el token (401). Pulsa «Probar token» en el paso 1 para ver qué pasa.');
+  if (r.status === 403) throw new Error('El token es válido pero no tiene permiso para cambiar licencias (403). Genera uno nuevo en la aplicación de Gumroad.');
   if (!j) throw new Error('Respuesta vacía de Gumroad (código ' + r.status + ').');
   if (!j.success) throw new Error(j.message || 'Gumroad devolvió un error.');
   return j;
@@ -211,6 +214,16 @@ function reply(lang) {
     : `Hola${name ? ' ' + name : ''}:\n\nListo: he liberado tu licencia de ${app}, así que ya puedes activarla en tu equipo nuevo. Abre ${url} (o la app que tengas instalada), pulsa «Activar Pro» y pega tu clave.\n\nSi algo no va, responde a este correo.\n\nGracias por usar MarkDawn,\nDiego`;
 }
 
+$('testTok').onclick = async () => {
+  const t = token(); if (!t) return; const m = $('tokMsg');
+  m.className = 'msg'; m.textContent = 'Probando…';
+  try {
+    const r = await fetch('https://api.gumroad.com/v2/user?access_token=' + encodeURIComponent(t));
+    let j = null; try { j = await r.json(); } catch (e) {}
+    if (r.ok && j && j.success) { m.className = 'msg ok'; m.textContent = 'Token válido: cuenta ' + ((j.user && (j.user.name || j.user.email)) || 'de Gumroad') + '.'; log('Token válido'); }
+    else { m.className = 'msg bad'; m.textContent = `Gumroad no reconoce este token (código ${r.status}). Has pegado ${t.length} caracteres, empieza por «${t.slice(0, 4)}…». Copia el Access token, no el Application ID ni el secret.`; log('Token no válido: ' + r.status); }
+  } catch (e) { m.className = 'msg bad'; m.textContent = 'No se pudo conectar con Gumroad.'; }
+};
 $('check').onclick = check;
 $('key').onkeydown = e => { if (e.key === 'Enter') check(); };
 $('dec1').onclick = () => decrementTo(Math.max(0, cur.uses - 1));
