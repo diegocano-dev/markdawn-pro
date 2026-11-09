@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MarkDawn Licencias</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1d1b;--mute:#6b6a65;--line:#e3dfd6;--acc:#b8860b;--ok:#2f7d4f;--bad:#b3392f;--soft:#faf7f0}
+@media (prefers-color-scheme:dark){:root{--bg:#17171a;--card:#212125;--ink:#ecebe7;--mute:#9a9893;--line:#34343a;--acc:#e0b04a;--ok:#5fbf86;--bad:#ec7a6f;--soft:#1c1c20}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:22px;margin:0 0 4px}
+h1 span{color:var(--acc)}
+.sub{color:var(--mute);margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+.card h2{font-size:15px;margin:0 0 12px}
+label{display:block;font-size:13px;color:var(--mute);margin:10px 0 4px}
+input,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);font:inherit}
+input.key{font-family:ui-monospace,Consolas,monospace;letter-spacing:.5px;text-transform:uppercase}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1 1 200px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--mute);margin-top:8px}
+.chk input{width:auto}
+button{font:inherit;padding:9px 14px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--acc)}
+button.pri{background:var(--acc);border-color:var(--acc);color:#1d1d1b;font-weight:600}
+button.danger{color:var(--bad)}
+button:disabled{opacity:.45;cursor:default}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.res{display:none}
+.grid{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;font-size:14px}
+.grid div:nth-child(odd){color:var(--mute)}
+.uses{font-size:28px;font-weight:700}
+.uses small{font-size:14px;color:var(--mute);font-weight:400}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ok)}
+.bar i.full{background:var(--bad)}
+.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:600}
+.tag.ok{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.tag.bad{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+#log{font:12px/1.5 ui-monospace,Consolas,monospace;color:var(--mute);white-space:pre-wrap;max-height:180px;overflow:auto}
+details{font-size:14px}
+details summary{cursor:pointer;color:var(--mute)}
+ol{padding-left:20px;margin:8px 0}
+textarea{width:100%;min-height:110px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);font:13px/1.5 system-ui,sans-serif}
+.msg{margin-top:10px;font-size:14px}
+.msg.ok{color:var(--ok)}.msg.bad{color:var(--bad)}
+</style>
+</head>
+<body>
+<main>
+<h1>MarkDawn <span>Licencias</span></h1>
+<p class="sub">Comprueba una clave de Writer Pro o Mind Pro y libera equipos cuando un cliente llega al máximo de 3. Tu token no se guarda en esta página ni se envía a ningún sitio salvo a Gumroad.</p>
+
+<div class="card">
+  <h2>1. Tu token de Gumroad</h2>
+  <label for="tok">Access token (solo hace falta para liberar, desactivar o reactivar)</label>
+  <input id="tok" type="password" autocomplete="off" placeholder="Pega aquí tu token">
+  <div class="chk"><input id="remember" type="checkbox"><label for="remember" style="margin:0">Recordarlo en este navegador</label></div>
+  <details style="margin-top:10px"><summary>¿Cómo consigo el token?</summary>
+    <ol>
+      <li>En Gumroad: <b>Settings → Advanced → Applications</b>.</li>
+      <li>Crea una aplicación: nombre «MarkDawn Licencias», icono cualquiera y en <i>Redirect URI</i> pon <code>http://127.0.0.1</code>.</li>
+      <li>Pulsa <b>Create application</b> y luego <b>Generate access token</b>.</li>
+      <li>Copia el token y pégalo arriba. No lo compartas: da acceso a tu cuenta de Gumroad.</li>
+    </ol>
+  </details>
+</div>
+
+<div class="card">
+  <h2>2. La clave del cliente</h2>
+  <div class="row">
+    <div><label for="prod">Producto</label>
+      <select id="prod">
+        <option value="auto">Detectar (Writer Pro o Mind Pro)</option>
+        <option value="7H1U6qX-11rSyUkXCSDSpw==">MarkDawn Writer Pro</option>
+        <option value="UBZZ6FmGRzDUmIzPc7IoSw==">MarkDawn Mind Pro</option>
+      </select></div>
+    <div><label for="key">Clave de licencia</label>
+      <input id="key" class="key" placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX" spellcheck="false"></div>
+  </div>
+  <div class="btns"><button class="pri" id="check">Comprobar</button></div>
+  <div class="msg" id="msg"></div>
+</div>
+
+<div class="card res" id="res">
+  <h2>Resultado</h2>
+  <div class="uses" id="uses">0 <small>de 3 equipos</small></div>
+  <div class="bar"><i id="bari"></i></div>
+  <div class="grid" id="info"></div>
+  <div class="btns">
+    <button class="pri" id="dec1">Liberar 1 equipo</button>
+    <button id="leave2">Dejar en 2 (permite 1 equipo más)</button>
+    <button id="zero">Poner a 0</button>
+    <button class="danger" id="disable">Desactivar clave</button>
+    <button id="enable">Reactivar clave</button>
+  </div>
+  <p class="sub" style="margin:12px 0 0;font-size:13px">Liberar no desactiva los equipos donde ya está activada: solo deja sitio para activarla en otro. Al activar, la app suma 1; si un intento se rechaza por el límite, no suma.</p>
+</div>
+
+<div class="card res" id="reply">
+  <h2>Respuesta al cliente</h2>
+  <div class="btns" style="margin-top:0">
+    <button id="rEn">English</button><button id="rEs">Español</button><button id="copy">Copiar</button>
+  </div>
+  <textarea id="replyTxt" style="margin-top:10px"></textarea>
+</div>
+
+<div class="card"><h2>Registro</h2><div id="log"></div></div>
+</main>
+
+<script>
+const API = 'https://api.gumroad.com/v2/licenses/';
+const NAMES = { '7H1U6qX-11rSyUkXCSDSpw==': 'MarkDawn Writer Pro', 'UBZZ6FmGRzDUmIzPc7IoSw==': 'MarkDawn Mind Pro' };
+const URLS = { '7H1U6qX-11rSyUkXCSDSpw==': 'https://pro.markdawn.net/writer/', 'UBZZ6FmGRzDUmIzPc7IoSw==': 'https://pro.markdawn.net/mind/' };
+const MAX = 3;
+const $ = id => document.getElementById(id);
+let cur = null; // { pid, key, uses, purchase }
+
+function store(get, val) { try { if (get) return localStorage.getItem('mdl-token'); if (val) localStorage.setItem('mdl-token', val); else localStorage.removeItem('mdl-token'); } catch (e) { return null; } }
+const saved = store(true); if (saved) { $('tok').value = saved; $('remember').checked = true; }
+$('remember').onchange = () => store(false, $('remember').checked ? $('tok').value.trim() : '');
+$('tok').oninput = () => { if ($('remember').checked) store(false, $('tok').value.trim()); };
+
+function log(t) { const d = new Date().toLocaleTimeString(); $('log').textContent = `[${d}] ${t}\n` + $('log').textContent; }
+function msg(t, cls) { $('msg').textContent = t || ''; $('msg').className = 'msg ' + (cls || ''); }
+function busy(on) { document.querySelectorAll('button').forEach(b => b.disabled = on); }
+
+async function call(path, method, params) {
+  const r = await fetch(API + path, { method, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(params) });
+  let j = null; try { j = await r.json(); } catch (e) {}
+  if (r.status === 422 && location.protocol === 'file:') throw new Error('Gumroad no acepta peticiones desde un archivo abierto con doble clic. Abre la herramienta desde https://pro.markdawn.net/licencias/');
+  if (r.status === 401) throw new Error('Gumroad no acepta el token (401). Revísalo o genera uno nuevo.');
+  if (!j) throw new Error('Respuesta vacía de Gumroad (código ' + r.status + ').');
+  if (!j.success) throw new Error(j.message || 'Gumroad devolvió un error.');
+  return j;
+}
+async function verify(pid, key) { return call('verify', 'POST', { product_id: pid, license_key: key, increment_uses_count: 'false' }); }
+
+async function check() {
+  const key = $('key').value.trim().toUpperCase(); $('key').value = key;
+  if (!key) return msg('Escribe la clave.', 'bad');
+  busy(true); msg('Comprobando…');
+  const pids = $('prod').value === 'auto' ? Object.keys(NAMES) : [$('prod').value];
+  let found = null, lastErr = '';
+  for (const pid of pids) {
+    try { const j = await verify(pid, key); found = { pid, key, uses: j.uses || 0, purchase: j.purchase || {} }; break; }
+    catch (e) { lastErr = e.message; }
+  }
+  busy(false);
+  if (!found) { cur = null; $('res').style.display = $('reply').style.display = 'none'; msg(/does not exist/i.test(lastErr) ? 'Esa clave no existe en Writer Pro ni en Mind Pro.' : lastErr, 'bad'); log('Comprobar ' + key + ': ' + lastErr); return; }
+  cur = found; msg(''); render(); log(`Comprobada: ${NAMES[found.pid]} · ${found.uses} usos`);
+}
+
+function render() {
+  const p = cur.purchase, u = cur.uses;
+  $('uses').innerHTML = `${u} <small>de ${MAX} equipos${u > MAX ? ' (por encima del máximo)' : ''}</small>`;
+  $('bari').style.width = Math.min(100, u / MAX * 100) + '%'; $('bari').className = u >= MAX ? 'full' : '';
+  const revoked = p.refunded || p.chargebacked || p.disputed;
+  const disabled = p.license_disabled === true;
+  const state = revoked ? '<span class="tag bad">Devuelta o anulada</span>' : disabled ? '<span class="tag bad">Clave desactivada</span>' : '<span class="tag ok">Válida</span>';
+  const rows = [
+    ['Producto', NAMES[cur.pid]], ['Estado', state], ['Correo', p.email || '—'], ['Nombre', p.full_name || '—'],
+    ['Fecha de compra', p.created_at ? new Date(p.created_at).toLocaleString('es') : '—'],
+    ['Precio', p.price != null ? (p.price / 100).toFixed(2) + ' ' + (p.currency || '').toUpperCase() : '—'],
+    ['Pedido', p.order_number || p.sale_id || '—']
+  ];
+  $('info').innerHTML = rows.map(([a, b]) => `<div>${a}</div><div>${String(b).replace(/</g, '&lt;').replace(/&lt;span/g, '<span').replace(/&lt;\/span/g, '</span')}</div>`).join('');
+  $('dec1').disabled = u <= 0; $('zero').disabled = u <= 0; $('leave2').disabled = u <= MAX - 1;
+  $('res').style.display = $('reply').style.display = 'block';
+  reply($('replyTxt').dataset.lang || 'en');
+}
+
+function token() { const t = $('tok').value.trim(); if (!t) { msg('Pega primero tu token de Gumroad (paso 1).', 'bad'); $('tok').focus(); } return t; }
+
+async function decrementTo(target) {
+  if (!cur) return; const t = token(); if (!t) return;
+  busy(true); let n = 0;
+  try {
+    while (cur.uses > target && n < 50) {
+      const j = await call('decrement_uses_count', 'PUT', { access_token: t, product_id: cur.pid, license_key: cur.key });
+      cur.uses = j.uses != null ? j.uses : cur.uses - 1; n++;
+    }
+    const j = await verify(cur.pid, cur.key); cur.uses = j.uses || 0; cur.purchase = j.purchase || cur.purchase;
+    msg(`Hecho: ${n} equipo${n === 1 ? '' : 's'} liberado${n === 1 ? '' : 's'}. Ahora tiene ${cur.uses} de ${MAX}.`, 'ok');
+    log(`Liberados ${n} · ${cur.key} · ahora ${cur.uses}`);
+  } catch (e) { msg(e.message, 'bad'); log('Error al liberar: ' + e.message); }
+  busy(false); render();
+}
+
+async function setEnabled(on) {
+  if (!cur) return; const t = token(); if (!t) return;
+  if (!on && !confirm('¿Desactivar esta clave? Dejará de activarse en equipos nuevos, y los que la tienen la perderán en la próxima comprobación mensual.')) return;
+  busy(true);
+  try {
+    await call(on ? 'enable' : 'disable', 'PUT', { access_token: t, product_id: cur.pid, license_key: cur.key });
+    cur.purchase.license_disabled = !on;
+    msg(on ? 'Clave reactivada.' : 'Clave desactivada.', 'ok'); log((on ? 'Reactivada ' : 'Desactivada ') + cur.key);
+  } catch (e) { msg(e.message, 'bad'); log('Error: ' + e.message); }
+  busy(false); render();
+}
+
+function reply(lang) {
+  if (!cur) return; $('replyTxt').dataset.lang = lang;
+  const name = (cur.purchase.full_name || '').split(' ')[0];
+  const app = NAMES[cur.pid], url = URLS[cur.pid];
+  $('replyTxt').value = lang === 'en'
+    ? `Hi${name ? ' ' + name : ''},\n\nDone: I've freed up your ${app} license, so you can activate it again on your new device. Open ${url} (or the app you have installed), click «Activate Pro» and paste your key.\n\nIf anything doesn't work, just reply to this email.\n\nThanks for using MarkDawn,\nDiego`
+    : `Hola${name ? ' ' + name : ''}:\n\nListo: he liberado tu licencia de ${app}, así que ya puedes activarla en tu equipo nuevo. Abre ${url} (o la app que tengas instalada), pulsa «Activar Pro» y pega tu clave.\n\nSi algo no va, responde a este correo.\n\nGracias por usar MarkDawn,\nDiego`;
+}
+
+$('check').onclick = check;
+$('key').onkeydown = e => { if (e.key === 'Enter') check(); };
+$('dec1').onclick = () => decrementTo(Math.max(0, cur.uses - 1));
+$('leave2').onclick = () => decrementTo(MAX - 1);
+$('zero').onclick = () => decrementTo(0);
+$('disable').onclick = () => setEnabled(false);
+$('enable').onclick = () => setEnabled(true);
+$('rEn').onclick = () => reply('en'); $('rEs').onclick = () => reply('es');
+$('copy').onclick = async () => { try { await navigator.clipboard.writeText($('replyTxt').value); log('Respuesta copiada'); } catch (e) { $('replyTxt').select(); } };
+</script>
+</body>
+</html>
